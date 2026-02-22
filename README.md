@@ -1,3 +1,4 @@
+```text
 ┌─────────────────────────────────────────┐
                           │               CLI (cli.py)              │
                           │   p58 match --input proposal.pdf        │
