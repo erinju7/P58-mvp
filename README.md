@@ -1,4 +1,5 @@
 ```text
+**Architecture**
 ┌─────────────────────────────────────────┐
                           │               CLI (cli.py)              │
                           │   p58 match --input proposal.pdf        │
@@ -43,3 +44,25 @@
                                         │  • requires_human_review     │
                                         │  • explanation               │
                                         └──────────────────────────────┘
+
+**Output Schema**
+json{
+  "proposal_id": "P001",
+  "ranked_matches": [
+    {
+      "funding_id": "F204",
+      "funding_name": "Sustainable Materials Innovation Call",
+      "alignment_score": 87,
+      "dimensions": {
+        "thematic": 90,
+        "technical": 85,
+        "feasibility": 85,
+        "timeline": 80,
+        "budget": 90
+      },
+      "decision_status": "VALID",
+      "requires_human_review": true,
+      "explanation": "This funding opportunity strongly aligns with the proposal's focus on biomaterials and polymer synthesis. The thematic and budget scores are high, though the project timeline slightly exceeds the funding window."
+    }
+  ]
+}
