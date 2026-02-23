@@ -17,14 +17,15 @@
   │  ProposalAgent     │    │    MatchingAgent       │    │  ValidationAgent        │
   │ (proposal_agent.py)│    │  (matching_agent.py)   │    │ (validation_agent.py)   │
   │                    │    │                        │    │                         │
-  │  • Load PDF/DOCX/  │    │  • Eligibility filter  │    │  • Validate score       │
-  │    TXT/MD          │──▶ │  • Embedding retrieval │──▶ │    stability            │
-  │  • Extract keywords│    │  • Top-K candidates    │    │  • Constraint recheck   │
-  │  • LLM → semantic  │    │  • Score per dimension │    │  • Flag for human       │
-  │    fields          │    │    (thematic/technical │    │    review               │
-  │  • Normalize text  │    │    feasibility/timeline│    │                         │
-  │                    │    │    /budget)            │    │                         │
-  │                    │    │  • Weighted re-rank    │    │                         │
+  │  • Load PDF/DOCX/  │    │  • Eligibility filter  │    │  • LLM consistency      │
+  │    TXT/MD          │──▶ │  • Embedding retrieval │──▶ │    check (run twice →   │
+  │  • Extract keywords│    │  • Top-K candidates    │    │    uncertainty score)   │
+  │  • LLM → semantic  │    │  • Score per dimension │    │  • LLM soft constraint  │
+  │    fields          │    │    (thematic/technical │    │    recheck              │
+  │  • Normalize text  │    │    feasibility/timeline│    │  • LLM explanation      │
+  │                    │    │    /budget) by LLM     │    │    generation           │
+  │                    │    │  • Weighted re-rank    │    │  • Flag for human       │
+  │                    │    │                        │    │    review               │
   └────────┬───────────┘    └───────────┬────────────┘    └────────────┬────────────┘
            │                            │                              │
            ▼                            └──────────────────────────────┘
@@ -40,4 +41,5 @@
   └─────────────────────┘               │  • dimensions {}             │
                                         │  • decision_status           │
                                         │  • requires_human_review     │
+                                        │  • explanation               │
                                         └──────────────────────────────┘
