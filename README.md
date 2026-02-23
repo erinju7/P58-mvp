@@ -46,6 +46,7 @@
                                         └──────────────────────────────┘
 ```
 **Output Schema**
+```text
 json{
   "proposal_id": "P001",
   "ranked_matches": [
@@ -66,3 +67,4 @@ json{
     }
   ]
 }
+```
