@@ -1,5 +1,5 @@
-```text
 **Architecture**
+```text
 ┌─────────────────────────────────────────┐
                           │               CLI (cli.py)              │
                           │   p58 match --input proposal.pdf        │
@@ -44,7 +44,7 @@
                                         │  • requires_human_review     │
                                         │  • explanation               │
                                         └──────────────────────────────┘
-
+```
 **Output Schema**
 json{
   "proposal_id": "P001",
