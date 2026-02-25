@@ -18,13 +18,13 @@
   │  ProposalAgent     │    │    MatchingAgent       │    │  ValidationAgent        │
   │ (proposal_agent.py)│    │  (matching_agent.py)   │    │ (validation_agent.py)   │
   │                    │    │                        │    │                         │
-  │  • Load PDF/DOCX/  │    │  • Eligibility filter  │    │  • LLM consistency      │
-  │    TXT/MD          │──▶ │  • Embedding retrieval │──▶ │    check (run twice →   │
-  │  • Extract keywords│    │  • Top-K candidates    │    │    uncertainty score)   │
-  │  • LLM → semantic  │    │  • Score per dimension │    │  • LLM soft constraint  │
-  │    fields          │    │    (thematic/technical │    │    recheck              │
-  │  • Normalize text  │    │    feasibility/timeline│    │  • LLM explanation      │
-  │                    │    │    /budget) by LLM     │    │    generation           │
+  │  • Read from       │    │  • Eligibility filter  │    │  • LLM consistency      │
+  │    Module 1        │──▶ │  • Embedding retrieval │──▶ │    check (run twice →   │
+  │    Registry        │    │  • Top-K candidates    │    │    uncertainty score)   │
+  │  • Clean \n\n      │    │  • Score per dimension │    │  • LLM soft constraint  │
+  │    artifacts       │    │    (thematic/technical │    │    recheck              │
+  │  • Map fields to   │    │    feasibility/timeline│    │  • LLM explanation      │
+  │    proposal schema │    │    /budget) by LLM     │    │    generation           │
   │                    │    │  • Weighted re-rank    │    │  • Flag for human       │
   │                    │    │                        │    │    review               │
   └────────┬───────────┘    └───────────┬────────────┘    └────────────┬────────────┘
@@ -34,16 +34,18 @@
   │  Proposal Schema:   │                              ▼
   │                     │               ┌──────────────────────────────┐     ┌─────────────────────────┐
   │  • proposal_id      │               │      MatchOutput JSON        │────▶│   Registry (SQLite)     │
-  │  • core_problem     │               │        (schemas.py)          │     │     (registry.py)       │
-  │  • solution_approach│               │                              │     └─────────────────────────┘
-  │  • domains          │               │  • proposal_id               │
-  │  • technical_reqs   │               │  • ranked_matches            │
-  │  • readiness_level  │               │  • alignment_score           │
-  └─────────────────────┘               │  • dimensions {}             │
-                                        │  • decision_status           │
-                                        │  • requires_human_review     │
-                                        │  • explanation               │
-                                        └──────────────────────────────┘
+  │    (doc.doc_id)     │               │        (schemas.py)          │     │     (registry.py)       │
+  │  • core_problem     │               │                              │     └─────────────────────────┘
+  │    (objectives)     │               │  • proposal_id               │
+  │  • solution_approach│               │  • ranked_matches            │
+  │    (methods)        │               │  • alignment_score           │
+  │  • domains          │               │  • dimensions {}             │
+  │    (domain_area)    │               │  • decision_status           │
+  │  • technical_reqs   │               │  • requires_human_review     │
+  │    (methods)        │               │  • explanation               │
+  │  • readiness_level  │               └──────────────────────────────┘
+  │    (timeline)       │
+  └─────────────────────┘
 ```
 **Output Schema**
 ```text
