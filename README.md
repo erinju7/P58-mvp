@@ -21,7 +21,7 @@
   │  • Read from       │    │  • Eligibility filter  │    │  • LLM consistency      │
   │    Module 1        │──▶ │  • Embedding retrieval │──▶ │    check (run twice →   │
   │    Registry        │    │  • Top-K candidates    │    │    uncertainty score)   │
-  │  • Clean \n\n      │    │  • Score per dimension │    │  • LLM soft constraint  │
+  │  • Clean           │    │  • Score per dimension │    │  • LLM soft constraint  │
   │    artifacts       │    │    (thematic/technical │    │    recheck              │
   │  • Map fields to   │    │    feasibility/timeline│    │  • LLM explanation      │
   │    proposal schema │    │    /budget) by LLM     │    │    generation           │
