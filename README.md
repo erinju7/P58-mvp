@@ -1,19 +1,6 @@
-# P58 MVP — Proposal-Funding Matching Pipeline
+# P58 Proposal-Funding Matching Pipeline
 
 Matches research proposals (ingested by Module 1) against a funding database using a 3-agent CrewAI pipeline powered by Groq (Qwen3-32B).
-
----
-
-## Stack
-
-| Component | Technology |
-|-----------|-----------|
-| Agent framework | CrewAI 0.80.0 |
-| LLM | `groq/qwen/qwen3-32b` via LiteLLM |
-| Registry | SQLite (`registry.sqlite`) |
-| Python | 3.11 (venv) |
-
----
 
 ## Quickstart
 
@@ -127,4 +114,4 @@ Columns: `analysis_id`, `proposal_id`, `ran_at`, `model`, `funding_id`, `funding
 
 ## Rate Limits
 
-The free Groq tier has a 6,000 TPM limit. `max_rpm=1` is set on the Crew to stay within limits (~6–8 minutes per proposal). Upgrade to [Groq Dev Tier](https://console.groq.com/settings/billing) to remove this constraint.
+The free Groq tier has a 6,000 TPM limit. `max_rpm=1` is set on the Crew to stay within limits (~6–8 minutes per proposal).
