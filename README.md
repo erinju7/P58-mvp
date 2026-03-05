@@ -106,9 +106,9 @@ Columns: `analysis_id`, `proposal_id`, `ran_at`, `model`, `funding_id`, `funding
 
 | Status | Meaning |
 |--------|---------|
-| `VALID` | Strong match — recommended to apply |
+| `VALID` | Strong match: recommended to apply |
 | `REVIEW` | Good match but requires human verification |
-| `INVALID` | Fundamental mismatch — not worth applying |
+| `INVALID` | Fundamental mismatch: not worth applying |
 
 ---
 
